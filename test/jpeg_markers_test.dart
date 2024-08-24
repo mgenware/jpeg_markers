@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 Future<void> _t(String fileName) async {
   final image = 'test/files/$fileName.jpg';
   final dump = 'test/files/$fileName.txt';
-  List<String> res = [];
+  final List<String> res = [];
   scanJpegMarkers(await File(image).readAsBytes(), (offset, marker) {
     res.add('$offset: $marker');
     return true;

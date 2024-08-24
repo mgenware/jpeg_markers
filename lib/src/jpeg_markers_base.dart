@@ -32,6 +32,7 @@ class JpegMarker {
   }
 }
 
+/// Scans the JPEG markers in the given data.
 void scanJpegMarkers(
     Uint8List data, bool Function(JpegMarker marker, int offset) callback) {
   int offset = 0;
@@ -115,11 +116,12 @@ JpegMarker? _showMarkers(Uint8List data) {
       return JpegMarker(data[1], 0, 'End of Image');
 
     case 0xda:
-      print("FFDA: Start of Scan [NC:${data[4]}]");
-      int headersize = _calculateMarkerSize(data);
+      final headersize = _calculateMarkerSize(data);
       int offset = headersize;
       while (true) {
-        if (data[offset] == 0xff && data[offset + 1] != 0x00) break;
+        if (data[offset] == 0xff && data[offset + 1] != 0x00) {
+          break;
+        }
         offset++;
       }
       return JpegMarker(data[1], offset, 'Start of Scan', extra: {
@@ -172,8 +174,6 @@ JpegMarker? _showMarkers(Uint8List data) {
       return JpegMarker(data[1], _calculateMarkerSize(data), 'Comment');
 
     default:
-      print(
-          "Unknown: ${data[0].toRadixString(16).toUpperCase()} ${data[1].toRadixString(16).toUpperCase()}");
       return JpegMarker(data[1], -1, null);
   }
 }
