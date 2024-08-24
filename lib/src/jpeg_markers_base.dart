@@ -37,7 +37,7 @@ void scanJpegMarkers(
     Uint8List data, bool Function(JpegMarker marker, int offset) callback) {
   int offset = 0;
   while (offset < data.length) {
-    final markerData = data.sublist(offset);
+    final markerData = Uint8List.sublistView(data, offset);
     final marker = _showMarkers(markerData);
     var shouldContinue = true;
     if (marker != null) {
@@ -46,7 +46,9 @@ void scanJpegMarkers(
     if (!shouldContinue) {
       break;
     }
-    if (marker != null && marker.contentSize >= 0) {
+    if (marker == null) {
+      offset = _nextMarkerIndex(data, offset + 1);
+    } else if (marker.contentSize >= 0) {
       offset += 2 + marker.contentSize;
     } else {
       offset += 2 + _contentSize(markerData);
@@ -110,28 +112,10 @@ JpegMarker? _showMarkers(Uint8List data) {
 
     case 0xda:
       final headersize = _contentSize(data);
-      int offset = headersize;
-      while (offset < data.length - 1) {
-        final cur = data[offset];
-        final next = data[offset + 1];
-        if (cur == 0xff &&
-            next != 0x00 &&
-            next != 0xd0 &&
-            next != 0xd1 &&
-            next != 0xd2 &&
-            next != 0xd3 &&
-            next != 0xd4 &&
-            next != 0xd5 &&
-            next != 0xd6 &&
-            next != 0xd7 &&
-            next != 0xd8) {
-          break;
-        }
-        offset++;
-      }
-      return JpegMarker(data[1], offset - 2, 'Start of Scan', extra: {
+      final nextMarkerIndex = _nextMarkerIndex(data, headersize);
+      return JpegMarker(data[1], nextMarkerIndex - 2, 'Start of Scan', extra: {
         'NC': data[4],
-        'size': offset - headersize,
+        'size': nextMarkerIndex - headersize,
       });
 
     case 0xdb:
@@ -175,4 +159,27 @@ JpegMarker? _showMarkers(Uint8List data) {
     default:
       return JpegMarker(data[1], -1, null);
   }
+}
+
+int _nextMarkerIndex(Uint8List data, int startIndex) {
+  int offset = startIndex;
+  while (offset < data.length - 1) {
+    final cur = data[offset];
+    final next = data[offset + 1];
+    if (cur == 0xff &&
+        next != 0x00 &&
+        next != 0xd0 &&
+        next != 0xd1 &&
+        next != 0xd2 &&
+        next != 0xd3 &&
+        next != 0xd4 &&
+        next != 0xd5 &&
+        next != 0xd6 &&
+        next != 0xd7 &&
+        next != 0xd8) {
+      break;
+    }
+    offset++;
+  }
+  return offset;
 }
