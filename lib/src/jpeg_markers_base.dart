@@ -5,8 +5,8 @@ class JpegMarker {
   /// The type byte of the marker.
   final int type;
 
-  /// The size of the marker. -1 means unknown marker.
-  final int size;
+  /// The content size of the marker. -1 means unknown marker.
+  final int contentSize;
 
   /// null means unknown marker.
   final String? description;
@@ -14,7 +14,7 @@ class JpegMarker {
   /// Extra information about the marker.
   final Map<String, dynamic>? extra;
 
-  JpegMarker(this.type, this.size, this.description, {this.extra});
+  JpegMarker(this.type, this.contentSize, this.description, {this.extra});
 
   @override
   String toString() {
@@ -22,8 +22,8 @@ class JpegMarker {
     final hexType = '0x${type.toRadixString(16).toUpperCase()}';
     String s = hexType;
     s += '(${description ?? 'Unknown'})';
-    if (size >= 0) {
-      s += ' | Size: $size';
+    if (contentSize >= 0) {
+      s += ' | Size: $contentSize';
     }
     if (extraStr != null) {
       s += ' | Extra: {${extraStr.join(', ')}}';
@@ -47,15 +47,11 @@ void scanJpegMarkers(
       break;
     }
     if (marker != null) {
-      if (marker.size < 0) {
+      if (marker.contentSize < 0) {
         // Assume the size is stored in the next two bytes.
-        offset += _calculateMarkerSize(markerData);
+        offset += 2 + _contentSize(markerData);
       } else {
-        // End of image.
-        if (marker.size == 0) {
-          break;
-        }
-        offset += marker.size;
+        offset += 2 + marker.contentSize;
       }
     } else {
       // Find the next 0xff byte.
@@ -64,8 +60,8 @@ void scanJpegMarkers(
   }
 }
 
-int _calculateMarkerSize(Uint8List data) {
-  return 2 + data[2] * 256 + data[3];
+int _contentSize(Uint8List data) {
+  return data[2] * 256 + data[3];
 }
 
 JpegMarker? _showMarkers(Uint8List data) {
@@ -76,15 +72,15 @@ JpegMarker? _showMarkers(Uint8List data) {
   switch (data[1]) {
     case 0xc0:
       return JpegMarker(
-          data[1], _calculateMarkerSize(data), 'Start of Frame (baseline)');
+          data[1], _contentSize(data), 'Start of Frame (baseline)');
 
     case 0xc1:
-      return JpegMarker(data[1], _calculateMarkerSize(data),
-          'Start of Frame (extended sequential)');
+      return JpegMarker(
+          data[1], _contentSize(data), 'Start of Frame (extended sequential)');
 
     case 0xc2:
       return JpegMarker(
-          data[1], _calculateMarkerSize(data), 'Start of Frame (progressive)',
+          data[1], _contentSize(data), 'Start of Frame (progressive)',
           extra: {
             'P': data[4],
             'Y': 256 * data[5] + data[6],
@@ -94,10 +90,10 @@ JpegMarker? _showMarkers(Uint8List data) {
 
     case 0xc3:
       return JpegMarker(
-          data[1], _calculateMarkerSize(data), 'Start of Frame (lossless)');
+          data[1], _contentSize(data), 'Start of Frame (lossless)');
 
     case 0xc4:
-      return JpegMarker(data[1], _calculateMarkerSize(data), 'Define Huffman');
+      return JpegMarker(data[1], _contentSize(data), 'Define Huffman');
 
     case 0xd0:
     case 0xd1:
@@ -107,16 +103,16 @@ JpegMarker? _showMarkers(Uint8List data) {
     case 0xd5:
     case 0xd6:
     case 0xd7:
-      return JpegMarker(data[1], 2, 'Restart');
+      return JpegMarker(data[1], 0, 'Restart');
 
     case 0xd8:
-      return JpegMarker(data[1], 2, 'SOI');
+      return JpegMarker(data[1], 0, 'SOI');
 
     case 0xd9:
       return JpegMarker(data[1], 0, 'End of Image');
 
     case 0xda:
-      final headersize = _calculateMarkerSize(data);
+      final headersize = _contentSize(data);
       int offset = headersize;
       while (true) {
         if (data[offset] == 0xff && data[offset + 1] != 0x00) {
@@ -124,24 +120,19 @@ JpegMarker? _showMarkers(Uint8List data) {
         }
         offset++;
       }
-      return JpegMarker(data[1], offset, 'Start of Scan', extra: {
+      return JpegMarker(data[1], offset - 2, 'Start of Scan', extra: {
         'NC': data[4],
         'size': offset - headersize,
       });
 
     case 0xdb:
-      return JpegMarker(
-          data[1], _calculateMarkerSize(data), 'Define Quantization');
+      return JpegMarker(data[1], _contentSize(data), 'Define Quantization');
 
     case 0xdd:
-      return JpegMarker(
-          data[1],
-          // 2 bytes for marker, 4 bytes for data.
-          2 + 4,
-          'Define Restart Interval');
+      return JpegMarker(data[1], 4, 'Define Restart Interval');
 
     case 0xe0:
-      return JpegMarker(data[1], _calculateMarkerSize(data), 'JFIF', extra: {
+      return JpegMarker(data[1], _contentSize(data), 'JFIF', extra: {
         'V': 256 * data[8] + data[9],
         'U': '${data[10]}/${data[11]}',
         'Xd': 256 * data[12] + data[13],
@@ -151,7 +142,7 @@ JpegMarker? _showMarkers(Uint8List data) {
       });
 
     case 0xe1:
-      return JpegMarker(data[1], _calculateMarkerSize(data), 'EXIF');
+      return JpegMarker(data[1], _contentSize(data), 'EXIF');
 
     case 0xe2:
     case 0xe3:
@@ -167,11 +158,10 @@ JpegMarker? _showMarkers(Uint8List data) {
     case 0xed:
     case 0xee:
     case 0xef:
-      return JpegMarker(
-          data[1], _calculateMarkerSize(data), 'APP${data[1] - 0xe0}');
+      return JpegMarker(data[1], _contentSize(data), 'APP${data[1] - 0xe0}');
 
     case 0xfe:
-      return JpegMarker(data[1], _calculateMarkerSize(data), 'Comment');
+      return JpegMarker(data[1], _contentSize(data), 'Comment');
 
     default:
       return JpegMarker(data[1], -1, null);
