@@ -1,9 +1,9 @@
 0xD8(SOI) | Size: 0: 0
 0xE0(JFIF) | Size: 16 | Extra: {V: 1, U: 1/1, Xd: 72, Yd: 72, Xt: 0, Yt: 0}: 2
 0xED(APP13) | Size: 8742: 20
-0xE1(EXIF) | Size: 36: 8764
+0xE1(APP1) | Size: 36: 8764
 0xE2(APP2) | Size: 3160: 8802
-0xE1(EXIF) | Size: 5585: 11964
+0xE1(APP1) | Size: 5585: 11964
 0xDB(Define Quantization) | Size: 67: 17551
 0xDB(Define Quantization) | Size: 67: 17620
 0xC2(Start of Frame (progressive)) | Size: 17 | Extra: {P: 8, Y: 522, X: 783, Nf: 3}: 17689

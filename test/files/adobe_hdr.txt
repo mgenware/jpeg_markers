@@ -1,0 +1,13 @@
+0xD8(SOI) | Size: 0: 0
+0xE1(APP1) | Size: 8805: 2
+0xED(APP13) | Size: 8742: 8809
+0xE2(APP2) | Size: 564: 17553
+0xE1(APP1) | Size: 1203: 18119
+0xE2(APP2) | Size: 88: 19324
+0xDB(Define Quantization) | Size: 132: 19414
+0xDD(Define Restart Interval) | Size: 4: 19548
+0xEE(APP14) | Size: 14: 19554
+0xC0(Start of Frame (baseline)) | Size: 17: 19570
+0xC4(Define Huffman) | Size: 418: 19589
+0xDA(Start of Scan) | Size: 1350 | Extra: {NC: 3, size: 1340}: 20009
+0xD0(Restart) | Size: 0: 21361

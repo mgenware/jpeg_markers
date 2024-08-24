@@ -1,9 +1,9 @@
 0xD8(SOI) | Size: 0: 0
-0xE1(EXIF) | Size: 4685: 2
+0xE1(APP1) | Size: 4685: 2
 0xE0(JFIF) | Size: 16 | Extra: {V: 1, U: 2/0, Xd: 1, Yd: 1, Xt: 0, Yt: 0}: 4689
 0xE2(APP2) | Size: 600: 4707
-0xE1(EXIF) | Size: 1064: 5309
-0xE1(EXIF) | Size: 54379: 6375
+0xE1(APP1) | Size: 1064: 5309
+0xE1(APP1) | Size: 54379: 6375
 0xE2(APP2) | Size: 88: 60756
 0xDB(Define Quantization) | Size: 67: 60846
 0xDB(Define Quantization) | Size: 67: 60915
@@ -16,7 +16,7 @@
 0xD9(End of Image) | Size: 0: 257907
 0xD8(SOI) | Size: 0: 257909
 0xE0(JFIF) | Size: 16 | Extra: {V: 1, U: 2/0, Xd: 1, Yd: 1, Xt: 0, Yt: 0}: 257911
-0xE1(EXIF) | Size: 571: 257929
+0xE1(APP1) | Size: 571: 257929
 0xDB(Define Quantization) | Size: 67: 258502
 0xC0(Start of Frame (baseline)) | Size: 11: 258571
 0xC4(Define Huffman) | Size: 31: 258584

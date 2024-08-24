@@ -33,9 +33,9 @@ Example output:
 0xD8(SOI) | Size: 2: 0
 0xE0(JFIF) | Size: 18 | Extra: {V: 1, U: 1/1, Xd: 72, Yd: 72, Xt: 0, Yt: 0}: 2
 0xED(APP13) | Size: 8744: 20
-0xE1(EXIF) | Size: 38: 8764
+0xE1(APP1) | Size: 38: 8764
 0xE2(APP2) | Size: 3162: 8802
-0xE1(EXIF) | Size: 5587: 11964
+0xE1(APP1) | Size: 5587: 11964
 0xDB(Define Quantization) | Size: 69: 17551
 0xDB(Define Quantization) | Size: 69: 17620
 0xC2(Start of Frame (progressive)) | Size: 19 | Extra: {P: 8, Y: 522, X: 783, Nf: 3}: 17689

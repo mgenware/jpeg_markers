@@ -46,16 +46,10 @@ void scanJpegMarkers(
     if (!shouldContinue) {
       break;
     }
-    if (marker != null) {
-      if (marker.contentSize < 0) {
-        // Assume the size is stored in the next two bytes.
-        offset += 2 + _contentSize(markerData);
-      } else {
-        offset += 2 + marker.contentSize;
-      }
+    if (marker != null && marker.contentSize >= 0) {
+      offset += 2 + marker.contentSize;
     } else {
-      // Find the next 0xff byte.
-      offset = data.indexOf(0xff, offset + 1);
+      offset += 2 + _contentSize(markerData);
     }
   }
 }
@@ -142,7 +136,7 @@ JpegMarker? _showMarkers(Uint8List data) {
       });
 
     case 0xe1:
-      return JpegMarker(data[1], _contentSize(data), 'EXIF');
+      return JpegMarker(data[1], _contentSize(data), 'APP1');
 
     case 0xe2:
     case 0xe3:
