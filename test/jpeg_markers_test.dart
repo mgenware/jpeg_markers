@@ -27,4 +27,7 @@ void main() {
   test('Pixel 8', () async {
     await _t('pixel_8');
   });
+  test('Adobe', () async {
+    await _t('adobe_hdr');
+  });
 }

@@ -64,6 +64,9 @@ JpegMarker? _showMarkers(Uint8List data) {
   }
 
   switch (data[1]) {
+    case 0x00:
+      return JpegMarker(data[1], 0, 'Reserved for JPEG extensions');
+
     case 0xc0:
       return JpegMarker(
           data[1], _contentSize(data), 'Start of Frame (baseline)');
@@ -108,8 +111,20 @@ JpegMarker? _showMarkers(Uint8List data) {
     case 0xda:
       final headersize = _contentSize(data);
       int offset = headersize;
-      while (true) {
-        if (data[offset] == 0xff && data[offset + 1] != 0x00) {
+      while (offset < data.length - 1) {
+        final cur = data[offset];
+        final next = data[offset + 1];
+        if (cur == 0xff &&
+            next != 0x00 &&
+            next != 0xd0 &&
+            next != 0xd1 &&
+            next != 0xd2 &&
+            next != 0xd3 &&
+            next != 0xd4 &&
+            next != 0xd5 &&
+            next != 0xd6 &&
+            next != 0xd7 &&
+            next != 0xd8) {
           break;
         }
         offset++;

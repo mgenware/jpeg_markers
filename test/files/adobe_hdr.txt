@@ -9,5 +9,14 @@
 0xEE(APP14) | Size: 14: 19554
 0xC0(Start of Frame (baseline)) | Size: 17: 19570
 0xC4(Define Huffman) | Size: 418: 19589
-0xDA(Start of Scan) | Size: 1350 | Extra: {NC: 3, size: 1340}: 20009
-0xD0(Restart) | Size: 0: 21361
+0xDA(Start of Scan) | Size: 807290 | Extra: {NC: 3, size: 807280}: 20009
+0xD9(End of Image) | Size: 0: 827301
+0xD8(SOI) | Size: 0: 827303
+0xE1(APP1) | Size: 1097: 827305
+0xDB(Define Quantization) | Size: 132: 828404
+0xDD(Define Restart Interval) | Size: 4: 828538
+0xEE(APP14) | Size: 14: 828544
+0xC0(Start of Frame (baseline)) | Size: 17: 828560
+0xC4(Define Huffman) | Size: 418: 828579
+0xDA(Start of Scan) | Size: 284854 | Extra: {NC: 3, size: 284844}: 828999
+0xD9(End of Image) | Size: 0: 1113855
