@@ -70,16 +70,14 @@ JpegMarker? _showMarkers(Uint8List data) {
       return JpegMarker(data[1], 0, 'Reserved for JPEG extensions');
 
     case 0xc0:
-      return JpegMarker(
-          data[1], _contentSize(data), 'Start of Frame (baseline)');
+      return JpegMarker(data[1], _contentSize(data), 'SOF (baseline)');
 
     case 0xc1:
       return JpegMarker(
-          data[1], _contentSize(data), 'Start of Frame (extended sequential)');
+          data[1], _contentSize(data), 'SOF (extended sequential)');
 
     case 0xc2:
-      return JpegMarker(
-          data[1], _contentSize(data), 'Start of Frame (progressive)',
+      return JpegMarker(data[1], _contentSize(data), 'SOF (progressive)',
           extra: {
             'P': data[4],
             'Y': 256 * data[5] + data[6],
@@ -88,11 +86,10 @@ JpegMarker? _showMarkers(Uint8List data) {
           });
 
     case 0xc3:
-      return JpegMarker(
-          data[1], _contentSize(data), 'Start of Frame (lossless)');
+      return JpegMarker(data[1], _contentSize(data), 'SOF (lossless)');
 
     case 0xc4:
-      return JpegMarker(data[1], _contentSize(data), 'Define Huffman');
+      return JpegMarker(data[1], _contentSize(data), 'DHT');
 
     case 0xd0:
     case 0xd1:
@@ -102,27 +99,27 @@ JpegMarker? _showMarkers(Uint8List data) {
     case 0xd5:
     case 0xd6:
     case 0xd7:
-      return JpegMarker(data[1], 0, 'Restart');
+      return JpegMarker(data[1], 0, 'RST${data[1] - 0xd0}');
 
     case 0xd8:
       return JpegMarker(data[1], 0, 'SOI');
 
     case 0xd9:
-      return JpegMarker(data[1], 0, 'End of Image');
+      return JpegMarker(data[1], 0, 'EOI');
 
     case 0xda:
       final headersize = _contentSize(data);
       final nextMarkerIndex = _nextMarkerIndex(data, headersize);
-      return JpegMarker(data[1], nextMarkerIndex - 2, 'Start of Scan', extra: {
+      return JpegMarker(data[1], nextMarkerIndex - 2, 'SOS', extra: {
         'NC': data[4],
         'size': nextMarkerIndex - headersize,
       });
 
     case 0xdb:
-      return JpegMarker(data[1], _contentSize(data), 'Define Quantization');
+      return JpegMarker(data[1], _contentSize(data), 'DQT');
 
     case 0xdd:
-      return JpegMarker(data[1], 4, 'Define Restart Interval');
+      return JpegMarker(data[1], 4, 'DRI');
 
     case 0xe0:
       return JpegMarker(data[1], _contentSize(data), 'JFIF', extra: {

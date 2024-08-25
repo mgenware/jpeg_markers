@@ -17,7 +17,7 @@ Future<void> _t(String fileName) async {
   // await File(dumpFile).writeAsString(actual);
 
   final expected = await File(dumpFile).readAsString();
-  expect(actual, expected);
+  expect(actual, expected.trim());
 }
 
 void main() {
