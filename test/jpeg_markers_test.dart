@@ -30,4 +30,7 @@ void main() {
   test('Adobe', () async {
     await _t('adobe_hdr');
   });
+  test('gainmap_iso21496_1', () async {
+    await _t('gainmap_iso21496_1');
+  });
 }

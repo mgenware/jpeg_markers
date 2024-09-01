@@ -1,0 +1,24 @@
+0xD8(SOI) | Size: 0: 0
+0xE0(JFIF) | Size: 16 | Extra: {V: 1, U: 1/0, Xd: 1, Yd: 1, Xt: 0, Yt: 0}: 2
+0xE2(APP2) | Size: 536: 20
+0xE2(APP2) | Size: 34: 558
+0xDB(DQT) | Size: 67: 594
+0xDB(DQT) | Size: 67: 663
+0xC0(SOF (baseline)) | Size: 17: 732
+0xC4(DHT) | Size: 22: 751
+0xC4(DHT) | Size: 20: 775
+0xC4(DHT) | Size: 25: 797
+0xC4(DHT) | Size: 20: 824
+0xE2(APP2) | Size: 88: 846
+0xDA(SOS) | Size: 177 | Extra: {NC: 3, size: 167}: 936
+0xD9(EOI) | Size: 0: 1115
+0xD8(SOI) | Size: 0: 1117
+0xE0(JFIF) | Size: 16 | Extra: {V: 1, U: 1/0, Xd: 1, Yd: 1, Xt: 0, Yt: 0}: 1119
+0xE2(APP2) | Size: 528: 1137
+0xE2(APP2) | Size: 171: 1667
+0xDB(DQT) | Size: 67: 1840
+0xC0(SOF (baseline)) | Size: 11: 1909
+0xC4(DHT) | Size: 22: 1922
+0xC4(DHT) | Size: 20: 1946
+0xDA(SOS) | Size: 24 | Extra: {NC: 1, size: 18}: 1968
+0xD9(EOI) | Size: 0: 1994
