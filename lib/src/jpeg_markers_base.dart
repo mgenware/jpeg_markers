@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:typed_data';
 
 /// A class representing a JPEG marker.
@@ -33,8 +34,9 @@ class JpegMarker {
 }
 
 /// Scans the JPEG markers in the given data.
-void scanJpegMarkers(
-    Uint8List data, bool Function(JpegMarker marker, int offset) callback) {
+int scanJpegMarkers(
+    Uint8List data, bool Function(JpegMarker marker, int offset) callback,
+    {bool? continueOnNonMarkers}) {
   int offset = 0;
   while (offset < data.length) {
     final markerData = Uint8List.sublistView(data, offset);
@@ -47,6 +49,9 @@ void scanJpegMarkers(
       break;
     }
     if (marker == null) {
+      if (continueOnNonMarkers != true) {
+        break;
+      }
       offset = _nextMarkerIndex(data, offset + 1);
     } else if (marker.contentSize >= 0) {
       offset += 2 + marker.contentSize;
@@ -54,6 +59,7 @@ void scanJpegMarkers(
       offset += 2 + _contentSize(markerData);
     }
   }
+  return min(offset, data.length);
 }
 
 int _contentSize(Uint8List data) {
