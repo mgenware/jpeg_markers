@@ -76,14 +76,14 @@ JpegMarker? _showMarkers(Uint8List data) {
       return JpegMarker(data[1], 0, 'Reserved for JPEG extensions');
 
     case 0xc0:
-      return JpegMarker(data[1], _contentSize(data), 'SOF (baseline)');
+      return JpegMarker(data[1], _contentSize(data), 'SOF (Baseline)');
 
     case 0xc1:
       return JpegMarker(
-          data[1], _contentSize(data), 'SOF (extended sequential)');
+          data[1], _contentSize(data), 'SOF (Extended Sequential)');
 
     case 0xc2:
-      return JpegMarker(data[1], _contentSize(data), 'SOF (progressive)',
+      return JpegMarker(data[1], _contentSize(data), 'SOF (Progressive)',
           extra: {
             'P': data[4],
             'Y': 256 * data[5] + data[6],
@@ -92,7 +92,7 @@ JpegMarker? _showMarkers(Uint8List data) {
           });
 
     case 0xc3:
-      return JpegMarker(data[1], _contentSize(data), 'SOF (lossless)');
+      return JpegMarker(data[1], _contentSize(data), 'SOF (Lossless)');
 
     case 0xc4:
       return JpegMarker(data[1], _contentSize(data), 'DHT');

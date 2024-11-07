@@ -4,7 +4,7 @@
 0xE2(APP2) | Size: 34: 558
 0xDB(DQT) | Size: 67: 594
 0xDB(DQT) | Size: 67: 663
-0xC0(SOF (baseline)) | Size: 17: 732
+0xC0(SOF (Baseline)) | Size: 17: 732
 0xC4(DHT) | Size: 22: 751
 0xC4(DHT) | Size: 20: 775
 0xC4(DHT) | Size: 25: 797
@@ -17,7 +17,7 @@
 0xE2(APP2) | Size: 528: 1137
 0xE2(APP2) | Size: 171: 1667
 0xDB(DQT) | Size: 67: 1840
-0xC0(SOF (baseline)) | Size: 11: 1909
+0xC0(SOF (Baseline)) | Size: 11: 1909
 0xC4(DHT) | Size: 22: 1922
 0xC4(DHT) | Size: 20: 1946
 0xDA(SOS) | Size: 24 | Extra: {NC: 1, size: 18}: 1968

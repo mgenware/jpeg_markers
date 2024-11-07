@@ -7,7 +7,7 @@
 0xE2(APP2) | Size: 88: 60756
 0xDB(DQT) | Size: 67: 60846
 0xDB(DQT) | Size: 67: 60915
-0xC0(SOF (baseline)) | Size: 17: 60984
+0xC0(SOF (Baseline)) | Size: 17: 60984
 0xC4(DHT) | Size: 31: 61003
 0xC4(DHT) | Size: 181: 61036
 0xC4(DHT) | Size: 31: 61219
@@ -18,7 +18,7 @@
 0xE0(JFIF) | Size: 16 | Extra: {V: 1, U: 2/0, Xd: 1, Yd: 1, Xt: 0, Yt: 0}: 257911
 0xE1(APP1) | Size: 571: 257929
 0xDB(DQT) | Size: 67: 258502
-0xC0(SOF (baseline)) | Size: 11: 258571
+0xC0(SOF (Baseline)) | Size: 11: 258571
 0xC4(DHT) | Size: 31: 258584
 0xC4(DHT) | Size: 181: 258617
 0xDA(SOS) | Size: 8659 | Extra: {NC: 1, size: 8653}: 258800

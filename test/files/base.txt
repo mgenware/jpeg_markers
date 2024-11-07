@@ -6,7 +6,7 @@
 0xE1(APP1) | Size: 5585: 11964
 0xDB(DQT) | Size: 67: 17551
 0xDB(DQT) | Size: 67: 17620
-0xC2(SOF (progressive)) | Size: 17 | Extra: {P: 8, Y: 522, X: 783, Nf: 3}: 17689
+0xC2(SOF (Progressive)) | Size: 17 | Extra: {P: 8, Y: 522, X: 783, Nf: 3}: 17689
 0xC4(DHT) | Size: 29: 17708
 0xC4(DHT) | Size: 24: 17739
 0xDA(SOS) | Size: 8196 | Extra: {NC: 3, size: 8186}: 17765
