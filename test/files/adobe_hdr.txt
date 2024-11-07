@@ -7,16 +7,16 @@
 0xDB(DQT) | Size: 132: 19414
 0xDD(DRI) | Size: 4: 19548
 0xEE(APP14) | Size: 14: 19554
-0xC0(SOF (Baseline)) | Size: 17: 19570
+0xC0(SOF0 (Baseline)) | Size: 17: 19570
 0xC4(DHT) | Size: 418: 19589
-0xDA(SOS) | Size: 807290 | Extra: {NC: 3, size: 807280}: 20009
+0xDA(SOS) | Size: 807290 | Extra: {NC: 3}: 20009
 0xD9(EOI) | Size: 0: 827301
 0xD8(SOI) | Size: 0: 827303
 0xE1(APP1) | Size: 1097: 827305
 0xDB(DQT) | Size: 132: 828404
 0xDD(DRI) | Size: 4: 828538
 0xEE(APP14) | Size: 14: 828544
-0xC0(SOF (Baseline)) | Size: 17: 828560
+0xC0(SOF0 (Baseline)) | Size: 17: 828560
 0xC4(DHT) | Size: 418: 828579
-0xDA(SOS) | Size: 284854 | Extra: {NC: 3, size: 284844}: 828999
+0xDA(SOS) | Size: 284854 | Extra: {NC: 3}: 828999
 0xD9(EOI) | Size: 0: 1113855
