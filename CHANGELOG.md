@@ -1,3 +1,7 @@
+## 1.3.0
+
+- Add more uncommon markers.
+
 ## 1.2.0
 
 - Ignore non-markers by default.
