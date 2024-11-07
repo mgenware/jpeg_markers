@@ -76,14 +76,14 @@ JpegMarker? _showMarkers(Uint8List data) {
       return JpegMarker(data[1], 0, 'Reserved for JPEG extensions');
 
     case 0xc0:
-      return JpegMarker(data[1], _contentSize(data), 'SOF (Baseline)');
+      return JpegMarker(data[1], _contentSize(data), 'SOF0 (Baseline)');
 
     case 0xc1:
       return JpegMarker(
-          data[1], _contentSize(data), 'SOF (Extended Sequential)');
+          data[1], _contentSize(data), 'SOF1 (Extended Sequential)');
 
     case 0xc2:
-      return JpegMarker(data[1], _contentSize(data), 'SOF (Progressive)',
+      return JpegMarker(data[1], _contentSize(data), 'SOF2 (Progressive)',
           extra: {
             'P': data[4],
             'Y': 256 * data[5] + data[6],
@@ -92,10 +92,52 @@ JpegMarker? _showMarkers(Uint8List data) {
           });
 
     case 0xc3:
-      return JpegMarker(data[1], _contentSize(data), 'SOF (Lossless)');
+      return JpegMarker(data[1], _contentSize(data), 'SOF3 (Lossless)');
 
     case 0xc4:
       return JpegMarker(data[1], _contentSize(data), 'DHT');
+
+    case 0xc5:
+      return JpegMarker(
+          data[1], _contentSize(data), 'SOF5 (Differential Sequential)');
+
+    case 0xc6:
+      return JpegMarker(
+          data[1], _contentSize(data), 'SOF6 (Differential Progressive)');
+
+    case 0xc7:
+      return JpegMarker(
+          data[1], _contentSize(data), 'SOF7 (Differential Lossless)');
+
+    case 0xc8:
+      return JpegMarker(data[1], _contentSize(data), 'JPG');
+
+    case 0xc9:
+      return JpegMarker(data[1], _contentSize(data),
+          'SOF9 (Extended Sequential, Arithmetic)');
+
+    case 0xca:
+      return JpegMarker(
+          data[1], _contentSize(data), 'SOF10 (Progressive, Arithmetic)');
+
+    case 0xcb:
+      return JpegMarker(
+          data[1], _contentSize(data), 'SOF11 (Lossless, Arithmetic)');
+
+    case 0xcc:
+      return JpegMarker(data[1], _contentSize(data), 'DAC');
+
+    case 0xcd:
+      return JpegMarker(data[1], _contentSize(data),
+          'SOF13 (Differential Sequential, Arithmetic)');
+
+    case 0xce:
+      return JpegMarker(data[1], _contentSize(data),
+          'SOF14 (Differential Progressive, Arithmetic)');
+
+    case 0xcf:
+      return JpegMarker(data[1], _contentSize(data),
+          'SOF15 (Differential Lossless, Arithmetic)');
 
     case 0xd0:
     case 0xd1:
@@ -118,14 +160,22 @@ JpegMarker? _showMarkers(Uint8List data) {
       final nextMarkerIndex = _nextMarkerIndex(data, headersize);
       return JpegMarker(data[1], nextMarkerIndex - 2, 'SOS', extra: {
         'NC': data[4],
-        'size': nextMarkerIndex - headersize,
       });
 
     case 0xdb:
       return JpegMarker(data[1], _contentSize(data), 'DQT');
 
+    case 0xdc:
+      return JpegMarker(data[1], _contentSize(data), 'DNL');
+
     case 0xdd:
       return JpegMarker(data[1], 4, 'DRI');
+
+    case 0xde:
+      return JpegMarker(data[1], _contentSize(data), 'DHP');
+
+    case 0xdf:
+      return JpegMarker(data[1], _contentSize(data), 'EXP');
 
     case 0xe0:
       return JpegMarker(data[1], _contentSize(data), 'JFIF', extra: {
@@ -155,6 +205,22 @@ JpegMarker? _showMarkers(Uint8List data) {
     case 0xee:
     case 0xef:
       return JpegMarker(data[1], _contentSize(data), 'APP${data[1] - 0xe0}');
+
+    case 0xf0:
+    case 0xf1:
+    case 0xf2:
+    case 0xf3:
+    case 0xf4:
+    case 0xf5:
+    case 0xf6:
+    case 0xf7:
+    case 0xf8:
+    case 0xf9:
+    case 0xfa:
+    case 0xfb:
+    case 0xfc:
+    case 0xfd:
+      return JpegMarker(data[1], _contentSize(data), 'JPG${data[1] - 0xf0}');
 
     case 0xfe:
       return JpegMarker(data[1], _contentSize(data), 'Comment');
