@@ -1,30 +1,30 @@
 0xD8(SOI) | Size: 0: 0
-0xE0(JFIF) | Size: 16 | Extra: {V: 1, U: 1/1, Xd: 72, Yd: 72, Xt: 0, Yt: 0}: 2
+0xE0(JFIF) | Size: 16: 2
 0xED(APP13) | Size: 8742: 20
 0xE1(APP1) | Size: 36: 8764
 0xE2(APP2) | Size: 3160: 8802
 0xE1(APP1) | Size: 5585: 11964
 0xDB(DQT) | Size: 67: 17551
 0xDB(DQT) | Size: 67: 17620
-0xC2(SOF2 (Progressive)) | Size: 17 | Extra: {P: 8, Y: 522, X: 783, Nf: 3}: 17689
+0xC2(SOF2 (Progressive)) | Size: 17: 17689
 0xC4(DHT) | Size: 29: 17708
 0xC4(DHT) | Size: 24: 17739
-0xDA(SOS) | Size: 8196 | Extra: {NC: 3}: 17765
+0xDA(SOS) | Size: 8196: 17765
 0xC4(DHT) | Size: 50: 25963
-0xDA(SOS) | Size: 21282 | Extra: {NC: 1}: 26015
+0xDA(SOS) | Size: 21282: 26015
 0xC4(DHT) | Size: 51: 47299
-0xDA(SOS) | Size: 1341 | Extra: {NC: 1}: 47352
+0xDA(SOS) | Size: 1341: 47352
 0xC4(DHT) | Size: 50: 48695
-0xDA(SOS) | Size: 1290 | Extra: {NC: 1}: 48747
+0xDA(SOS) | Size: 1290: 48747
 0xC4(DHT) | Size: 83: 50039
-0xDA(SOS) | Size: 147499 | Extra: {NC: 1}: 50124
+0xDA(SOS) | Size: 147499: 50124
 0xC4(DHT) | Size: 39: 197625
-0xDA(SOS) | Size: 44422 | Extra: {NC: 1}: 197666
-0xDA(SOS) | Size: 2438 | Extra: {NC: 3}: 242090
+0xDA(SOS) | Size: 44422: 197666
+0xDA(SOS) | Size: 2438: 242090
 0xC4(DHT) | Size: 35: 244530
-0xDA(SOS) | Size: 583 | Extra: {NC: 1}: 244567
+0xDA(SOS) | Size: 583: 244567
 0xC4(DHT) | Size: 35: 245152
-0xDA(SOS) | Size: 585 | Extra: {NC: 1}: 245189
+0xDA(SOS) | Size: 585: 245189
 0xC4(DHT) | Size: 39: 245776
-0xDA(SOS) | Size: 48382 | Extra: {NC: 1}: 245817
+0xDA(SOS) | Size: 48382: 245817
 0xD9(EOI) | Size: 0: 294201
