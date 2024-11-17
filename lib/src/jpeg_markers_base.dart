@@ -60,6 +60,9 @@ int _contentSize(Uint8List data) {
 }
 
 JpegMarker? _showMarkers(Uint8List data) {
+  if (data.length < 2) {
+    return null;
+  }
   if (data[0] != 0xff) {
     return null;
   }
