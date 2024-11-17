@@ -1,3 +1,8 @@
+## 1.4.0
+
+- Remove `extra` from markers.
+- More length checks.
+
 ## 1.3.0
 
 - Add more uncommon markers.
