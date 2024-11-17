@@ -12,22 +12,15 @@ class JpegMarker {
   /// null means unknown marker.
   final String? description;
 
-  /// Extra information about the marker.
-  final Map<String, dynamic>? extra;
-
-  JpegMarker(this.type, this.contentSize, this.description, {this.extra});
+  JpegMarker(this.type, this.contentSize, this.description);
 
   @override
   String toString() {
-    final extraStr = extra?.entries.map((e) => '${e.key}: ${e.value}');
     final hexType = '0x${type.toRadixString(16).toUpperCase()}';
     String s = hexType;
     s += '(${description ?? 'Unknown'})';
     if (contentSize >= 0) {
       s += ' | Size: $contentSize';
-    }
-    if (extraStr != null) {
-      s += ' | Extra: {${extraStr.join(', ')}}';
     }
     return s;
   }
@@ -83,13 +76,7 @@ JpegMarker? _showMarkers(Uint8List data) {
           data[1], _contentSize(data), 'SOF1 (Extended Sequential)');
 
     case 0xc2:
-      return JpegMarker(data[1], _contentSize(data), 'SOF2 (Progressive)',
-          extra: {
-            'P': data[4],
-            'Y': 256 * data[5] + data[6],
-            'X': 256 * data[7] + data[8],
-            'Nf': data[9],
-          });
+      return JpegMarker(data[1], _contentSize(data), 'SOF2 (Progressive)');
 
     case 0xc3:
       return JpegMarker(data[1], _contentSize(data), 'SOF3 (Lossless)');
@@ -158,9 +145,7 @@ JpegMarker? _showMarkers(Uint8List data) {
     case 0xda:
       final headersize = _contentSize(data);
       final nextMarkerIndex = _nextMarkerIndex(data, headersize);
-      return JpegMarker(data[1], nextMarkerIndex - 2, 'SOS', extra: {
-        'NC': data[4],
-      });
+      return JpegMarker(data[1], nextMarkerIndex - 2, 'SOS');
 
     case 0xdb:
       return JpegMarker(data[1], _contentSize(data), 'DQT');
@@ -178,14 +163,7 @@ JpegMarker? _showMarkers(Uint8List data) {
       return JpegMarker(data[1], _contentSize(data), 'EXP');
 
     case 0xe0:
-      return JpegMarker(data[1], _contentSize(data), 'JFIF', extra: {
-        'V': 256 * data[8] + data[9],
-        'U': '${data[10]}/${data[11]}',
-        'Xd': 256 * data[12] + data[13],
-        'Yd': 256 * data[14] + data[15],
-        'Xt': data[16],
-        'Yt': data[17],
-      });
+      return JpegMarker(data[1], _contentSize(data), 'JFIF');
 
     case 0xe1:
       return JpegMarker(data[1], _contentSize(data), 'APP1');
