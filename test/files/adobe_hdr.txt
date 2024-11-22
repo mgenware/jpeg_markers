@@ -1,22 +1,22 @@
 0xD8(SOI) | Size: 0: 0
-0xE1(APP1) | Size: 8805: 2
-0xED(APP13) | Size: 8742: 8809
-0xE2(APP2) | Size: 564: 17553
-0xE1(APP1) | Size: 1203: 18119
-0xE2(APP2) | Size: 88: 19324
-0xDB(DQT) | Size: 132: 19414
-0xDD(DRI) | Size: 4: 19548
-0xEE(APP14) | Size: 14: 19554
-0xC0(SOF0 (Baseline)) | Size: 17: 19570
-0xC4(DHT) | Size: 418: 19589
-0xDA(SOS) | Size: 807290: 20009
+0xE1(APP1) | Size: 8805 | Content size: 8803: 2
+0xED(APP13) | Size: 8742 | Content size: 8740: 8809
+0xE2(APP2) | Size: 564 | Content size: 562: 17553
+0xE1(APP1) | Size: 1203 | Content size: 1201: 18119
+0xE2(APP2) | Size: 88 | Content size: 86: 19324
+0xDB(DQT) | Size: 132 | Content size: 130: 19414
+0xDD(DRI) | Size: 4 | Content size: 2: 19548
+0xEE(APP14) | Size: 14 | Content size: 12: 19554
+0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15: 19570
+0xC4(DHT) | Size: 418 | Content size: 416: 19589
+0xDA(SOS) | Size: 807290 | Content size: 807288: 20009
 0xD9(EOI) | Size: 0: 827301
 0xD8(SOI) | Size: 0: 827303
-0xE1(APP1) | Size: 1097: 827305
-0xDB(DQT) | Size: 132: 828404
-0xDD(DRI) | Size: 4: 828538
-0xEE(APP14) | Size: 14: 828544
-0xC0(SOF0 (Baseline)) | Size: 17: 828560
-0xC4(DHT) | Size: 418: 828579
-0xDA(SOS) | Size: 284854: 828999
+0xE1(APP1) | Size: 1097 | Content size: 1095: 827305
+0xDB(DQT) | Size: 132 | Content size: 130: 828404
+0xDD(DRI) | Size: 4 | Content size: 2: 828538
+0xEE(APP14) | Size: 14 | Content size: 12: 828544
+0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15: 828560
+0xC4(DHT) | Size: 418 | Content size: 416: 828579
+0xDA(SOS) | Size: 284854 | Content size: 284852: 828999
 0xD9(EOI) | Size: 0: 1113855

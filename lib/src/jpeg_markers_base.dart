@@ -10,7 +10,7 @@ class JpegMarker {
   final int segmentLength;
 
   /// The content size of the marker. Could be negative if segment length is invalid.
-  int get contentLength => segmentLength - 2;
+  int get contentLength => segmentLength <= 0 ? 0 : segmentLength - 2;
 
   /// null means unknown marker.
   final String? description;
@@ -24,6 +24,9 @@ class JpegMarker {
     s += '(${description ?? 'Unknown'})';
     if (segmentLength >= 0) {
       s += ' | Size: $segmentLength';
+    }
+    if (contentLength > 0) {
+      s += ' | Content size: $contentLength';
     }
     return s;
   }

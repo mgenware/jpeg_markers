@@ -1,25 +1,25 @@
 0xD8(SOI) | Size: 0: 0
-0xE0(JFIF) | Size: 16: 2
-0xE2(APP2) | Size: 536: 20
-0xE2(APP2) | Size: 34: 558
-0xDB(DQT) | Size: 67: 594
-0xDB(DQT) | Size: 67: 663
-0xC0(SOF0 (Baseline)) | Size: 17: 732
-0xC4(DHT) | Size: 22: 751
-0xC4(DHT) | Size: 20: 775
-0xC4(DHT) | Size: 25: 797
-0xC4(DHT) | Size: 20: 824
-0xE2(APP2) | Size: 88: 846
-0xDA(SOS) | Size: 177: 936
+0xE0(JFIF) | Size: 16 | Content size: 14: 2
+0xE2(APP2) | Size: 536 | Content size: 534: 20
+0xE2(APP2) | Size: 34 | Content size: 32: 558
+0xDB(DQT) | Size: 67 | Content size: 65: 594
+0xDB(DQT) | Size: 67 | Content size: 65: 663
+0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15: 732
+0xC4(DHT) | Size: 22 | Content size: 20: 751
+0xC4(DHT) | Size: 20 | Content size: 18: 775
+0xC4(DHT) | Size: 25 | Content size: 23: 797
+0xC4(DHT) | Size: 20 | Content size: 18: 824
+0xE2(APP2) | Size: 88 | Content size: 86: 846
+0xDA(SOS) | Size: 177 | Content size: 175: 936
 0xD9(EOI) | Size: 0: 1115
 0xD8(SOI) | Size: 0: 1117
-0xE0(JFIF) | Size: 16: 1119
-0xE2(APP2) | Size: 528: 1137
-0xE2(APP2) | Size: 171: 1667
-0xDB(DQT) | Size: 67: 1840
-0xC0(SOF0 (Baseline)) | Size: 11: 1909
-0xC4(DHT) | Size: 22: 1922
-0xC4(DHT) | Size: 20: 1946
-0xDA(SOS) | Size: 24: 1968
+0xE0(JFIF) | Size: 16 | Content size: 14: 1119
+0xE2(APP2) | Size: 528 | Content size: 526: 1137
+0xE2(APP2) | Size: 171 | Content size: 169: 1667
+0xDB(DQT) | Size: 67 | Content size: 65: 1840
+0xC0(SOF0 (Baseline)) | Size: 11 | Content size: 9: 1909
+0xC4(DHT) | Size: 22 | Content size: 20: 1922
+0xC4(DHT) | Size: 20 | Content size: 18: 1946
+0xDA(SOS) | Size: 24 | Content size: 22: 1968
 0xD9(EOI) | Size: 0: 1994
 0x6F(Unknown): 2155
