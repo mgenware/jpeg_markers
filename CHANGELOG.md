@@ -1,3 +1,7 @@
+## 1.5.0
+
+- Add `segmentLength` and `contentLength`.
+
 ## 1.4.0
 
 - Remove `extra` from markers.
