@@ -79,66 +79,70 @@ JpegMarker? _parseMarker(Uint8List data) {
     return null;
   }
 
-  switch (data[1]) {
+  final type = data[1];
+  switch (type) {
     case 0x00:
-      return JpegMarker(data[1], 0, 'Reserved for JPEG extensions');
+      return JpegMarker(type, 0, 'Reserved');
+
+    case 0x01:
+      return JpegMarker(type, 0, 'TEM');
 
     case 0xc0:
-      return JpegMarker(data[1], _segmentLength(data), 'SOF0 (Baseline)');
+      return JpegMarker(type, _segmentLength(data), 'SOF0 (Baseline)');
 
     case 0xc1:
       return JpegMarker(
-          data[1], _segmentLength(data), 'SOF1 (Extended Sequential)');
+          type, _segmentLength(data), 'SOF1 (Extended Sequential)');
 
     case 0xc2:
-      return JpegMarker(data[1], _segmentLength(data), 'SOF2 (Progressive)');
+      return JpegMarker(type, _segmentLength(data), 'SOF2 (Progressive)');
 
     case 0xc3:
-      return JpegMarker(data[1], _segmentLength(data), 'SOF3 (Lossless)');
+      return JpegMarker(type, _segmentLength(data), 'SOF3 (Lossless)');
 
     case 0xc4:
-      return JpegMarker(data[1], _segmentLength(data), 'DHT');
+      return JpegMarker(type, _segmentLength(data), 'DHT');
 
     case 0xc5:
       return JpegMarker(
-          data[1], _segmentLength(data), 'SOF5 (Differential Sequential)');
+          type, _segmentLength(data), 'SOF5 (Differential Sequential)');
 
     case 0xc6:
       return JpegMarker(
-          data[1], _segmentLength(data), 'SOF6 (Differential Progressive)');
+          type, _segmentLength(data), 'SOF6 (Differential Progressive)');
 
     case 0xc7:
       return JpegMarker(
-          data[1], _segmentLength(data), 'SOF7 (Differential Lossless)');
+          type, _segmentLength(data), 'SOF7 (Differential Lossless)');
 
     case 0xc8:
-      return JpegMarker(data[1], _segmentLength(data), 'JPG');
+      return JpegMarker(type, _segmentLength(data), 'JPG');
 
     case 0xc9:
-      return JpegMarker(data[1], _segmentLength(data),
-          'SOF9 (Extended Sequential, Arithmetic)');
+      return JpegMarker(
+          type, _segmentLength(data), 'SOF9 (Extended Sequential, Arithmetic)');
 
     case 0xca:
       return JpegMarker(
-          data[1], _segmentLength(data), 'SOF10 (Progressive, Arithmetic)');
+          type, _segmentLength(data), 'SOF10 (Progressive, Arithmetic)');
 
     case 0xcb:
       return JpegMarker(
-          data[1], _segmentLength(data), 'SOF11 (Lossless, Arithmetic)');
+          type, _segmentLength(data), 'SOF11 (Lossless, Arithmetic)');
 
     case 0xcc:
-      return JpegMarker(data[1], _segmentLength(data), 'DAC');
+      return JpegMarker(type, _segmentLength(data), 'DAC');
 
     case 0xcd:
-      return JpegMarker(data[1], _segmentLength(data),
+      return JpegMarker(type, _segmentLength(data),
           'SOF13 (Differential Sequential, Arithmetic)');
 
     case 0xce:
-      return JpegMarker(data[1], _segmentLength(data),
+      return JpegMarker(type, _segmentLength(data),
           'SOF14 (Differential Progressive, Arithmetic)');
 
     case 0xcf:
-      return JpegMarker(data[1], _segmentLength(data),
+      return JpegMarker(type, _segmentLength(data),
           'SOF15 (Differential Lossless, Arithmetic)');
 
     case 0xd0:
@@ -149,39 +153,39 @@ JpegMarker? _parseMarker(Uint8List data) {
     case 0xd5:
     case 0xd6:
     case 0xd7:
-      return JpegMarker(data[1], 0, 'RST${data[1] - 0xd0}');
+      return JpegMarker(type, 0, 'RST${type - 0xd0}');
 
     case 0xd8:
-      return JpegMarker(data[1], 0, 'SOI');
+      return JpegMarker(type, 0, 'SOI');
 
     case 0xd9:
-      return JpegMarker(data[1], 0, 'EOI');
+      return JpegMarker(type, 0, 'EOI');
 
     case 0xda:
       final headersize = _segmentLength(data);
       final nextMarkerIndex = _nextMarkerIndex(data, headersize);
-      return JpegMarker(data[1], nextMarkerIndex - 2, 'SOS');
+      return JpegMarker(type, nextMarkerIndex - 2, 'SOS');
 
     case 0xdb:
-      return JpegMarker(data[1], _segmentLength(data), 'DQT');
+      return JpegMarker(type, _segmentLength(data), 'DQT');
 
     case 0xdc:
-      return JpegMarker(data[1], _segmentLength(data), 'DNL');
+      return JpegMarker(type, _segmentLength(data), 'DNL');
 
     case 0xdd:
-      return JpegMarker(data[1], 4, 'DRI');
+      return JpegMarker(type, 4, 'DRI');
 
     case 0xde:
-      return JpegMarker(data[1], _segmentLength(data), 'DHP');
+      return JpegMarker(type, _segmentLength(data), 'DHP');
 
     case 0xdf:
-      return JpegMarker(data[1], _segmentLength(data), 'EXP');
+      return JpegMarker(type, _segmentLength(data), 'EXP');
 
     case 0xe0:
-      return JpegMarker(data[1], _segmentLength(data), 'JFIF');
+      return JpegMarker(type, _segmentLength(data), 'JFIF');
 
     case 0xe1:
-      return JpegMarker(data[1], _segmentLength(data), 'APP1');
+      return JpegMarker(type, _segmentLength(data), 'APP1');
 
     case 0xe2:
     case 0xe3:
@@ -197,7 +201,7 @@ JpegMarker? _parseMarker(Uint8List data) {
     case 0xed:
     case 0xee:
     case 0xef:
-      return JpegMarker(data[1], _segmentLength(data), 'APP${data[1] - 0xe0}');
+      return JpegMarker(type, _segmentLength(data), 'APP${type - 0xe0}');
 
     case 0xf0:
     case 0xf1:
@@ -213,13 +217,13 @@ JpegMarker? _parseMarker(Uint8List data) {
     case 0xfb:
     case 0xfc:
     case 0xfd:
-      return JpegMarker(data[1], _segmentLength(data), 'JPG${data[1] - 0xf0}');
+      return JpegMarker(type, _segmentLength(data), 'JPG${type - 0xf0}');
 
     case 0xfe:
-      return JpegMarker(data[1], _segmentLength(data), 'Comment');
+      return JpegMarker(type, _segmentLength(data), 'Comment');
 
     default:
-      return JpegMarker(data[1], -1, null);
+      return JpegMarker(type, -1, null);
   }
 }
 
