@@ -8,10 +8,9 @@ Future<void> _t(String fileName, int offset,
   final testFile = 'test/files/$fileName.jpg';
   final dumpFile = 'test/files/${dumpName ?? fileName}.txt';
   final List<String> res = [];
-  final actualOffset =
-      scanJpegMarkers(await File(testFile).readAsBytes(), (offset, marker) {
+  final actualOffset = await scanJpegMarkers(await File(testFile).readAsBytes(),
+      (offset, marker) async {
     res.add('$offset: $marker');
-    return true;
   }, continueOnNonMarkers: continueOnNonMarkers);
   final actual = res.join('\n');
 

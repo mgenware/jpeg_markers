@@ -1,3 +1,7 @@
+## 1.6.0
+
+- Make `scanJpegMarkers` async.
+
 ## 1.5.0
 
 - Add `segmentLength` and `contentLength`.

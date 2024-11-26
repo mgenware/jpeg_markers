@@ -1,6 +1,6 @@
 name: jpeg_markers
 description: Scan JPEG markers in a JPEG file.
-version: 1.5.2
+version: 1.6.0
 repository: https://github.com/mgenware/jpeg_markers
 
 environment:

@@ -33,19 +33,15 @@ class JpegMarker {
 }
 
 /// Scans the JPEG markers in the given data.
-int scanJpegMarkers(
-    Uint8List data, bool Function(JpegMarker marker, int offset) callback,
-    {bool? continueOnNonMarkers}) {
+Future<int> scanJpegMarkers(Uint8List data,
+    Future<void> Function(JpegMarker marker, int offset) callback,
+    {bool? continueOnNonMarkers}) async {
   int offset = 0;
   while (offset < data.length) {
     final markerData = Uint8List.sublistView(data, offset);
     final marker = _parseMarker(markerData);
-    var shouldContinue = true;
     if (marker != null) {
-      shouldContinue = callback(marker, offset);
-    }
-    if (!shouldContinue) {
-      break;
+      await callback(marker, offset);
     }
     if (marker == null) {
       if (continueOnNonMarkers != true) {
