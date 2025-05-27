@@ -4,11 +4,11 @@ version: 1.7.1
 repository: https://github.com/mgenware/jpeg_markers
 
 environment:
-  sdk: ^3.5.1
+  sdk: ^3.8.0
 
 # Add regular dependencies here.
-dependencies:
-  # path: ^1.8.0
+# dependencies:
+# path: ^1.8.0
 
 dev_dependencies:
   mgenware_dart_lints: ^7.0.0
