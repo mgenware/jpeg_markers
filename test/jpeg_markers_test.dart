@@ -3,15 +3,22 @@ import 'dart:io';
 import 'package:jpeg_markers/jpeg_markers.dart';
 import 'package:test/test.dart';
 
-Future<void> _t(String fileName, int offset,
-    {String? dumpName, bool? continueOnNonMarkers}) async {
+Future<void> _t(
+  String fileName,
+  int offset, {
+  String? dumpName,
+  bool? continueOnNonMarkers,
+}) async {
   final testFile = 'test/files/$fileName.jpg';
   final dumpFile = 'test/files/${dumpName ?? fileName}.txt';
   final List<String> res = [];
-  final actualOffset = await scanJpegMarkers(await File(testFile).readAsBytes(),
-      (offset, marker) async {
-    res.add('$offset: $marker');
-  }, continueOnNonMarkers: continueOnNonMarkers);
+  final actualOffset = await scanJpegMarkers(
+    await File(testFile).readAsBytes(),
+    (offset, marker) async {
+      res.add('$offset: $marker');
+    },
+    continueOnNonMarkers: continueOnNonMarkers,
+  );
   final actual = res.join('\n');
 
   // Use this to update the expected file.

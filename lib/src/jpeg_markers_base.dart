@@ -33,9 +33,11 @@ class JpegMarker {
 }
 
 /// Scans the JPEG markers in the given data.
-Future<int> scanJpegMarkers(Uint8List data,
-    Future<void> Function(JpegMarker marker, int offset) callback,
-    {bool? continueOnNonMarkers}) async {
+Future<int> scanJpegMarkers(
+  Uint8List data,
+  Future<void> Function(JpegMarker marker, int offset) callback, {
+  bool? continueOnNonMarkers,
+}) async {
   int offset = 0;
   while (offset < data.length) {
     final markerData = Uint8List.sublistView(data, offset);
@@ -88,7 +90,10 @@ JpegMarker? _parseMarker(Uint8List data) {
 
     case 0xc1:
       return JpegMarker(
-          type, _segmentLength(data), 'SOF1 (Extended Sequential)');
+        type,
+        _segmentLength(data),
+        'SOF1 (Extended Sequential)',
+      );
 
     case 0xc2:
       return JpegMarker(type, _segmentLength(data), 'SOF2 (Progressive)');
@@ -101,45 +106,72 @@ JpegMarker? _parseMarker(Uint8List data) {
 
     case 0xc5:
       return JpegMarker(
-          type, _segmentLength(data), 'SOF5 (Differential Sequential)');
+        type,
+        _segmentLength(data),
+        'SOF5 (Differential Sequential)',
+      );
 
     case 0xc6:
       return JpegMarker(
-          type, _segmentLength(data), 'SOF6 (Differential Progressive)');
+        type,
+        _segmentLength(data),
+        'SOF6 (Differential Progressive)',
+      );
 
     case 0xc7:
       return JpegMarker(
-          type, _segmentLength(data), 'SOF7 (Differential Lossless)');
+        type,
+        _segmentLength(data),
+        'SOF7 (Differential Lossless)',
+      );
 
     case 0xc8:
       return JpegMarker(type, _segmentLength(data), 'JPG');
 
     case 0xc9:
       return JpegMarker(
-          type, _segmentLength(data), 'SOF9 (Extended Sequential, Arithmetic)');
+        type,
+        _segmentLength(data),
+        'SOF9 (Extended Sequential, Arithmetic)',
+      );
 
     case 0xca:
       return JpegMarker(
-          type, _segmentLength(data), 'SOF10 (Progressive, Arithmetic)');
+        type,
+        _segmentLength(data),
+        'SOF10 (Progressive, Arithmetic)',
+      );
 
     case 0xcb:
       return JpegMarker(
-          type, _segmentLength(data), 'SOF11 (Lossless, Arithmetic)');
+        type,
+        _segmentLength(data),
+        'SOF11 (Lossless, Arithmetic)',
+      );
 
     case 0xcc:
       return JpegMarker(type, _segmentLength(data), 'DAC');
 
     case 0xcd:
-      return JpegMarker(type, _segmentLength(data),
-          'SOF13 (Differential Sequential, Arithmetic)');
+      return JpegMarker(
+        type,
+        _segmentLength(data),
+        'SOF13 (Differential Sequential, Arithmetic)',
+      );
 
     case 0xce:
-      return JpegMarker(type, _segmentLength(data),
-          'SOF14 (Differential Progressive, Arithmetic)');
+      return JpegMarker(
+        type,
+        _segmentLength(data),
+        'SOF14 (Differential Progressive, Arithmetic)',
+      );
 
     case 0xcf:
-      return JpegMarker(type, _segmentLength(data),
-          'SOF15 (Differential Lossless, Arithmetic)');
+      return JpegMarker(
+        type,
+        _segmentLength(data),
+        'SOF15 (Differential Lossless, Arithmetic)',
+      );
 
     case 0xd0:
     case 0xd1:
