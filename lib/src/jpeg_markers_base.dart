@@ -210,7 +210,7 @@ JpegMarker? _parseMarker(Uint8List data) {
       return JpegMarker(type, _segmentLength(data), 'EXP');
 
     case 0xe0:
-      return JpegMarker(type, _segmentLength(data), 'JFIF');
+      return JpegMarker(type, _segmentLength(data), 'APP0');
 
     case 0xe1:
       return JpegMarker(type, _segmentLength(data), 'APP1');

@@ -1,5 +1,5 @@
 0xD8(SOI) | Size: 0: 0
-0xE0(JFIF) | Size: 16 | Content size: 14: 2
+0xE0(APP0) | Size: 16 | Content size: 14: 2
 0xED(APP13) | Size: 8742 | Content size: 8740: 20
 0xE1(APP1) | Size: 36 | Content size: 34: 8764
 0xE2(APP2) | Size: 3160 | Content size: 3158: 8802
