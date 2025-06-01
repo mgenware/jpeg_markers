@@ -1,3 +1,7 @@
+## 1.8.0
+
+- Stop assuming APP0 is always JFIF.
+
 ## 1.6.0
 
 - Make `scanJpegMarkers` async.
