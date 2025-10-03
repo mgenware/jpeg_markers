@@ -32,24 +32,44 @@ class JpegMarker {
   }
 }
 
+class JpegSection {
+  final int offset;
+
+  JpegSection(this.offset);
+}
+
+class JpegDataSection extends JpegSection {
+  final int length;
+
+  JpegDataSection(super.offset, this.length);
+
+  @override
+  String toString() => 'JpegDataSection[$offset]\n$length';
+}
+
+class JpegMarkerSection extends JpegSection {
+  final JpegMarker marker;
+
+  JpegMarkerSection(super.offset, this.marker);
+
+  @override
+  String toString() => 'JpegMarkerSection[$offset]\n$marker';
+}
+
 /// Scans the JPEG markers in the given data.
-Future<int> scanJpegMarkers(
+int scanJpegMarkers(
   Uint8List data,
-  Future<void> Function(JpegMarker marker, int offset) callback, {
-  bool? continueOnNonMarkers,
-}) async {
+  void Function(JpegMarker marker, int offset) callback,
+) {
   int offset = 0;
   while (offset < data.length) {
     final markerData = Uint8List.sublistView(data, offset);
     final marker = _parseMarker(markerData);
     if (marker != null) {
-      await callback(marker, offset);
+      callback(marker, offset);
     }
     if (marker == null) {
-      if (continueOnNonMarkers != true) {
-        break;
-      }
-      offset = _nextMarkerIndex(data, offset + 1);
+      break;
     } else if (marker.segmentLength >= 0) {
       // 2 is marker size.
       offset += 2 + marker.segmentLength;
@@ -59,6 +79,87 @@ Future<int> scanJpegMarkers(
     }
   }
   return min(offset, data.length);
+}
+
+// (nextOffset, isSOI)
+(int, bool) _nextChunkOffset(Uint8List data, int start) {
+  if (data.isEmpty || start >= data.length - 1) {
+    return (-1, false);
+  }
+  // Find the next SOI.
+  for (int i = start; i < data.length - 1; i++) {
+    final cur = data[i];
+    final next = data[i + 1];
+    if (cur == 0xff && next == 0xd8) {
+      return (i, true);
+    }
+  }
+  return (data.length, false);
+}
+
+List<JpegSection> scanJpegSections(
+  Uint8List data,
+) {
+  final List<JpegSection> res = [];
+  var gOffset = 0;
+
+  void addAndMergeDataSection(int offset, int length) {
+    if (length <= 0) {
+      return;
+    }
+    if (res.isNotEmpty && res.last is JpegDataSection) {
+      final last = res.last as JpegDataSection;
+      if (last.offset + last.length == offset) {
+        // Merge
+        res[res.length - 1] = JpegDataSection(
+          last.offset,
+          last.length + length,
+        );
+        return;
+      }
+    }
+    res.add(JpegDataSection(offset, length));
+  }
+
+  while (true) {
+    final (nextSOIOffset, isSOI) = _nextChunkOffset(data, gOffset);
+    if (nextSOIOffset < 0) {
+      break;
+    }
+
+    // Handle data before the next SOI.
+    if (nextSOIOffset > gOffset) {
+      addAndMergeDataSection(gOffset, nextSOIOffset - gOffset);
+    }
+    gOffset = nextSOIOffset;
+
+    if (isSOI) {
+      // SOI
+      final possibleMarkers = <JpegMarkerSection>[];
+      final soiData = Uint8List.sublistView(data, gOffset);
+      final markersEndOffset = scanJpegMarkers(
+        soiData,
+        (marker, offset) {
+          possibleMarkers.add(JpegMarkerSection(gOffset + offset, marker));
+        },
+      );
+      final lastMarker = possibleMarkers.isNotEmpty
+          ? possibleMarkers.last
+          : null;
+      if (lastMarker != null && lastMarker.marker.type == 0xd9) {
+        // EOI
+        res.addAll(possibleMarkers);
+        gOffset += markersEndOffset;
+      } else {
+        // No EOI, discard all markers. Treat as data.
+        addAndMergeDataSection(gOffset, markersEndOffset);
+        gOffset += markersEndOffset;
+      }
+    } else {
+      break;
+    }
+  }
+  return res;
 }
 
 int _segmentLength(Uint8List data) {
