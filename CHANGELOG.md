@@ -1,3 +1,7 @@
+## 2.0.0
+
+- Change callback to non-async.
+
 ## 1.8.0
 
 - Stop assuming APP0 is always JFIF.
