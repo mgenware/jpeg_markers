@@ -13,7 +13,7 @@ Future<void> _t(String fileName) async {
   final actual = sections.map((e) => e.toString()).join('\n');
 
   // Use this to update the expected file.
-  await File(dumpFile).writeAsString(actual);
+  // await File(dumpFile).writeAsString(actual);
 
   final expected = await File(dumpFile).readAsString();
   expect(actual, expected.trim());
@@ -34,5 +34,11 @@ void main() {
   });
   test('payload', () async {
     await _t('payload');
+  });
+  test('markers_img_gap_img', () async {
+    await _t('markers_img_gap_img');
+  });
+  test('markers_img_gap_random_soi', () async {
+    await _t('markers_img_gap_random_soi');
   });
 }

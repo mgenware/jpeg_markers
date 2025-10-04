@@ -1,0 +1,30 @@
+JpegImgSection[0]
+634
+Markers: 
+0xD8(SOI) | Size: 0
+0xE0(APP0) | Size: 16 | Content size: 14
+0xDB(DQT) | Size: 67 | Content size: 65
+0xDB(DQT) | Size: 67 | Content size: 65
+0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15
+0xC4(DHT) | Size: 31 | Content size: 29
+0xC4(DHT) | Size: 181 | Content size: 179
+0xC4(DHT) | Size: 31 | Content size: 29
+0xC4(DHT) | Size: 181 | Content size: 179
+0xDA(SOS) | Size: 21 | Content size: 19
+0xD9(EOI) | Size: 0
+JpegDataSection[634]
+10
+JpegImgSection[644]
+634
+Markers: 
+0xD8(SOI) | Size: 0
+0xE0(APP0) | Size: 16 | Content size: 14
+0xDB(DQT) | Size: 67 | Content size: 65
+0xDB(DQT) | Size: 67 | Content size: 65
+0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15
+0xC4(DHT) | Size: 31 | Content size: 29
+0xC4(DHT) | Size: 181 | Content size: 179
+0xC4(DHT) | Size: 31 | Content size: 29
+0xC4(DHT) | Size: 181 | Content size: 179
+0xDA(SOS) | Size: 21 | Content size: 19
+0xD9(EOI) | Size: 0
