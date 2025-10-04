@@ -1,3 +1,7 @@
+## 2.5.0
+
+- Refactor image section markers.
+
 ## 2.0.0
 
 - Change callback to non-async.
