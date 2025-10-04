@@ -9,6 +9,8 @@ class JpegMarker {
   /// The segment size of the marker. -1 means unknown marker.
   final int segmentLength;
 
+  int get markerLength => segmentLength + 2;
+
   /// The content size of the marker. Could be negative if segment length is invalid.
   int get contentLength => segmentLength <= 0 ? 0 : segmentLength - 2;
 
@@ -32,28 +34,38 @@ class JpegMarker {
   }
 }
 
-class JpegSection {
+class JpegMarkerWithOffset {
   final int offset;
+  final JpegMarker marker;
 
-  JpegSection(this.offset);
+  JpegMarkerWithOffset(this.offset, this.marker);
+
+  @override
+  String toString() => '[$offset]: $marker';
+}
+
+abstract class JpegSection {
+  final int offset;
+  final int length;
+
+  JpegSection(this.offset, this.length);
 }
 
 class JpegDataSection extends JpegSection {
-  final int length;
-
-  JpegDataSection(super.offset, this.length);
+  JpegDataSection(super.offset, super.length);
 
   @override
   String toString() => 'JpegDataSection[$offset]\n$length';
 }
 
-class JpegMarkerSection extends JpegSection {
-  final JpegMarker marker;
+class JpegImgSection extends JpegSection {
+  final List<JpegMarker> markers;
 
-  JpegMarkerSection(super.offset, this.marker);
+  JpegImgSection(super.offset, super.length, this.markers);
 
   @override
-  String toString() => 'JpegMarkerSection[$offset]\n$marker';
+  String toString() =>
+      'JpegImgSection[$offset]\n$length\nMarkers: \n${markers.join('\n')}';
 }
 
 /// Scans the JPEG markers in the given data.
@@ -71,10 +83,10 @@ int scanJpegMarkers(
     if (marker == null) {
       break;
     } else if (marker.segmentLength >= 0) {
-      // 2 is marker size.
+      // 2 is marker type size.
       offset += 2 + marker.segmentLength;
     } else {
-      // 2 is marker size.
+      // 2 is marker type size.
       offset += 2 + _segmentLength(markerData);
     }
   }
@@ -121,6 +133,19 @@ List<JpegSection> scanJpegSections(
     res.add(JpegDataSection(offset, length));
   }
 
+  void flushMarkers(List<JpegMarkerWithOffset> markers) {
+    final startOffset = markers.first.offset;
+    final endOffset = markers.last.offset + markers.last.marker.markerLength;
+    final totalLength = endOffset - startOffset;
+    res.add(
+      JpegImgSection(
+        startOffset,
+        totalLength,
+        markers.map((e) => e.marker).toList(),
+      ),
+    );
+  }
+
   while (true) {
     final (nextSOIOffset, isSOI) = _nextChunkOffset(data, gOffset);
     if (nextSOIOffset < 0) {
@@ -135,12 +160,14 @@ List<JpegSection> scanJpegSections(
 
     if (isSOI) {
       // SOI
-      final possibleMarkers = <JpegMarkerSection>[];
+      final possibleMarkers = <JpegMarkerWithOffset>[];
       final soiData = Uint8List.sublistView(data, gOffset);
-      final markersEndOffset = scanJpegMarkers(
+      final localEndOffset = scanJpegMarkers(
         soiData,
-        (marker, offset) {
-          possibleMarkers.add(JpegMarkerSection(gOffset + offset, marker));
+        (marker, localOffset) {
+          possibleMarkers.add(
+            JpegMarkerWithOffset(gOffset + localOffset, marker),
+          );
         },
       );
       final lastMarker = possibleMarkers.isNotEmpty
@@ -148,12 +175,12 @@ List<JpegSection> scanJpegSections(
           : null;
       if (lastMarker != null && lastMarker.marker.type == 0xd9) {
         // EOI
-        res.addAll(possibleMarkers);
-        gOffset += markersEndOffset;
+        flushMarkers(possibleMarkers);
+        gOffset += localEndOffset;
       } else {
         // No EOI, discard all markers. Treat as data.
-        addAndMergeDataSection(gOffset, markersEndOffset);
-        gOffset += markersEndOffset;
+        addAndMergeDataSection(gOffset, localEndOffset);
+        gOffset += localEndOffset;
       }
     } else {
       break;

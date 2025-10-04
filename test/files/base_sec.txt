@@ -1,60 +1,33 @@
-JpegMarkerSection[0]
+JpegImgSection[0]
+294203
+Markers: 
 0xD8(SOI) | Size: 0
-JpegMarkerSection[2]
 0xE0(APP0) | Size: 16 | Content size: 14
-JpegMarkerSection[20]
 0xED(APP13) | Size: 8742 | Content size: 8740
-JpegMarkerSection[8764]
 0xE1(APP1) | Size: 36 | Content size: 34
-JpegMarkerSection[8802]
 0xE2(APP2) | Size: 3160 | Content size: 3158
-JpegMarkerSection[11964]
 0xE1(APP1) | Size: 5585 | Content size: 5583
-JpegMarkerSection[17551]
 0xDB(DQT) | Size: 67 | Content size: 65
-JpegMarkerSection[17620]
 0xDB(DQT) | Size: 67 | Content size: 65
-JpegMarkerSection[17689]
 0xC2(SOF2 (Progressive)) | Size: 17 | Content size: 15
-JpegMarkerSection[17708]
 0xC4(DHT) | Size: 29 | Content size: 27
-JpegMarkerSection[17739]
 0xC4(DHT) | Size: 24 | Content size: 22
-JpegMarkerSection[17765]
 0xDA(SOS) | Size: 8196 | Content size: 8194
-JpegMarkerSection[25963]
 0xC4(DHT) | Size: 50 | Content size: 48
-JpegMarkerSection[26015]
 0xDA(SOS) | Size: 21282 | Content size: 21280
-JpegMarkerSection[47299]
 0xC4(DHT) | Size: 51 | Content size: 49
-JpegMarkerSection[47352]
 0xDA(SOS) | Size: 1341 | Content size: 1339
-JpegMarkerSection[48695]
 0xC4(DHT) | Size: 50 | Content size: 48
-JpegMarkerSection[48747]
 0xDA(SOS) | Size: 1290 | Content size: 1288
-JpegMarkerSection[50039]
 0xC4(DHT) | Size: 83 | Content size: 81
-JpegMarkerSection[50124]
 0xDA(SOS) | Size: 147499 | Content size: 147497
-JpegMarkerSection[197625]
 0xC4(DHT) | Size: 39 | Content size: 37
-JpegMarkerSection[197666]
 0xDA(SOS) | Size: 44422 | Content size: 44420
-JpegMarkerSection[242090]
 0xDA(SOS) | Size: 2438 | Content size: 2436
-JpegMarkerSection[244530]
 0xC4(DHT) | Size: 35 | Content size: 33
-JpegMarkerSection[244567]
 0xDA(SOS) | Size: 583 | Content size: 581
-JpegMarkerSection[245152]
 0xC4(DHT) | Size: 35 | Content size: 33
-JpegMarkerSection[245189]
 0xDA(SOS) | Size: 585 | Content size: 583
-JpegMarkerSection[245776]
 0xC4(DHT) | Size: 39 | Content size: 37
-JpegMarkerSection[245817]
 0xDA(SOS) | Size: 48382 | Content size: 48380
-JpegMarkerSection[294201]
 0xD9(EOI) | Size: 0
