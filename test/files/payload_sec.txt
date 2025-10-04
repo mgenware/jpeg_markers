@@ -1,29 +1,29 @@
 JpegImgSection(0)[0]
 1996
 Markers: 
-0xD8(SOI) | Size: 0
-0xE0(APP0) | Size: 16 | Content size: 14
-0xE2(APP2) | Size: 536 | Content size: 534
-0xE2(APP2) | Size: 34 | Content size: 32
-0xDB(DQT) | Size: 67 | Content size: 65
-0xDB(DQT) | Size: 67 | Content size: 65
-0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15
-0xC4(DHT) | Size: 22 | Content size: 20
-0xC4(DHT) | Size: 20 | Content size: 18
-0xC4(DHT) | Size: 25 | Content size: 23
-0xC4(DHT) | Size: 20 | Content size: 18
-0xE2(APP2) | Size: 88 | Content size: 86
-0xDA(SOS) | Size: 177 | Content size: 175
-0xD9(EOI) | Size: 0
-0xD8(SOI) | Size: 0
-0xE0(APP0) | Size: 16 | Content size: 14
-0xE2(APP2) | Size: 528 | Content size: 526
-0xE2(APP2) | Size: 171 | Content size: 169
-0xDB(DQT) | Size: 67 | Content size: 65
-0xC0(SOF0 (Baseline)) | Size: 11 | Content size: 9
-0xC4(DHT) | Size: 22 | Content size: 20
-0xC4(DHT) | Size: 20 | Content size: 18
-0xDA(SOS) | Size: 24 | Content size: 22
-0xD9(EOI) | Size: 0
+[0]: 0xD8(SOI) | Size: 0
+[2]: 0xE0(APP0) | Size: 16 | Content size: 14
+[20]: 0xE2(APP2) | Size: 536 | Content size: 534
+[558]: 0xE2(APP2) | Size: 34 | Content size: 32
+[594]: 0xDB(DQT) | Size: 67 | Content size: 65
+[663]: 0xDB(DQT) | Size: 67 | Content size: 65
+[732]: 0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15
+[751]: 0xC4(DHT) | Size: 22 | Content size: 20
+[775]: 0xC4(DHT) | Size: 20 | Content size: 18
+[797]: 0xC4(DHT) | Size: 25 | Content size: 23
+[824]: 0xC4(DHT) | Size: 20 | Content size: 18
+[846]: 0xE2(APP2) | Size: 88 | Content size: 86
+[936]: 0xDA(SOS) | Size: 177 | Content size: 175
+[1115]: 0xD9(EOI) | Size: 0
+[1117]: 0xD8(SOI) | Size: 0
+[1119]: 0xE0(APP0) | Size: 16 | Content size: 14
+[1137]: 0xE2(APP2) | Size: 528 | Content size: 526
+[1667]: 0xE2(APP2) | Size: 171 | Content size: 169
+[1840]: 0xDB(DQT) | Size: 67 | Content size: 65
+[1909]: 0xC0(SOF0 (Baseline)) | Size: 11 | Content size: 9
+[1922]: 0xC4(DHT) | Size: 22 | Content size: 20
+[1946]: 0xC4(DHT) | Size: 20 | Content size: 18
+[1968]: 0xDA(SOS) | Size: 24 | Content size: 22
+[1994]: 0xD9(EOI) | Size: 0
 JpegDataSection(0)[1996]
 252

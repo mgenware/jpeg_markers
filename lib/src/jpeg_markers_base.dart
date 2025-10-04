@@ -61,7 +61,7 @@ class JpegDataSection extends JpegSection {
 }
 
 class JpegImgSection extends JpegSection {
-  final List<JpegMarker> markers;
+  final List<JpegMarkerWithOffset> markers;
   final int imgIndex;
 
   JpegImgSection(super.offset, super.length, this.markers, this.imgIndex);
@@ -148,7 +148,7 @@ List<JpegSection> scanJpegSections(
       JpegImgSection(
         startOffset,
         totalLength,
-        markers.map((e) => e.marker).toList(),
+        markers,
         ++imgIndex,
       ),
     );

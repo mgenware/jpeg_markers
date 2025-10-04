@@ -1,33 +1,33 @@
 JpegImgSection(0)[0]
 294203
 Markers: 
-0xD8(SOI) | Size: 0
-0xE0(APP0) | Size: 16 | Content size: 14
-0xED(APP13) | Size: 8742 | Content size: 8740
-0xE1(APP1) | Size: 36 | Content size: 34
-0xE2(APP2) | Size: 3160 | Content size: 3158
-0xE1(APP1) | Size: 5585 | Content size: 5583
-0xDB(DQT) | Size: 67 | Content size: 65
-0xDB(DQT) | Size: 67 | Content size: 65
-0xC2(SOF2 (Progressive)) | Size: 17 | Content size: 15
-0xC4(DHT) | Size: 29 | Content size: 27
-0xC4(DHT) | Size: 24 | Content size: 22
-0xDA(SOS) | Size: 8196 | Content size: 8194
-0xC4(DHT) | Size: 50 | Content size: 48
-0xDA(SOS) | Size: 21282 | Content size: 21280
-0xC4(DHT) | Size: 51 | Content size: 49
-0xDA(SOS) | Size: 1341 | Content size: 1339
-0xC4(DHT) | Size: 50 | Content size: 48
-0xDA(SOS) | Size: 1290 | Content size: 1288
-0xC4(DHT) | Size: 83 | Content size: 81
-0xDA(SOS) | Size: 147499 | Content size: 147497
-0xC4(DHT) | Size: 39 | Content size: 37
-0xDA(SOS) | Size: 44422 | Content size: 44420
-0xDA(SOS) | Size: 2438 | Content size: 2436
-0xC4(DHT) | Size: 35 | Content size: 33
-0xDA(SOS) | Size: 583 | Content size: 581
-0xC4(DHT) | Size: 35 | Content size: 33
-0xDA(SOS) | Size: 585 | Content size: 583
-0xC4(DHT) | Size: 39 | Content size: 37
-0xDA(SOS) | Size: 48382 | Content size: 48380
-0xD9(EOI) | Size: 0
+[0]: 0xD8(SOI) | Size: 0
+[2]: 0xE0(APP0) | Size: 16 | Content size: 14
+[20]: 0xED(APP13) | Size: 8742 | Content size: 8740
+[8764]: 0xE1(APP1) | Size: 36 | Content size: 34
+[8802]: 0xE2(APP2) | Size: 3160 | Content size: 3158
+[11964]: 0xE1(APP1) | Size: 5585 | Content size: 5583
+[17551]: 0xDB(DQT) | Size: 67 | Content size: 65
+[17620]: 0xDB(DQT) | Size: 67 | Content size: 65
+[17689]: 0xC2(SOF2 (Progressive)) | Size: 17 | Content size: 15
+[17708]: 0xC4(DHT) | Size: 29 | Content size: 27
+[17739]: 0xC4(DHT) | Size: 24 | Content size: 22
+[17765]: 0xDA(SOS) | Size: 8196 | Content size: 8194
+[25963]: 0xC4(DHT) | Size: 50 | Content size: 48
+[26015]: 0xDA(SOS) | Size: 21282 | Content size: 21280
+[47299]: 0xC4(DHT) | Size: 51 | Content size: 49
+[47352]: 0xDA(SOS) | Size: 1341 | Content size: 1339
+[48695]: 0xC4(DHT) | Size: 50 | Content size: 48
+[48747]: 0xDA(SOS) | Size: 1290 | Content size: 1288
+[50039]: 0xC4(DHT) | Size: 83 | Content size: 81
+[50124]: 0xDA(SOS) | Size: 147499 | Content size: 147497
+[197625]: 0xC4(DHT) | Size: 39 | Content size: 37
+[197666]: 0xDA(SOS) | Size: 44422 | Content size: 44420
+[242090]: 0xDA(SOS) | Size: 2438 | Content size: 2436
+[244530]: 0xC4(DHT) | Size: 35 | Content size: 33
+[244567]: 0xDA(SOS) | Size: 583 | Content size: 581
+[245152]: 0xC4(DHT) | Size: 35 | Content size: 33
+[245189]: 0xDA(SOS) | Size: 585 | Content size: 583
+[245776]: 0xC4(DHT) | Size: 39 | Content size: 37
+[245817]: 0xDA(SOS) | Size: 48382 | Content size: 48380
+[294201]: 0xD9(EOI) | Size: 0

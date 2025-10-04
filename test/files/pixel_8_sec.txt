@@ -1,28 +1,28 @@
 JpegImgSection(0)[0]
 267463
 Markers: 
-0xD8(SOI) | Size: 0
-0xE1(APP1) | Size: 4685 | Content size: 4683
-0xE0(APP0) | Size: 16 | Content size: 14
-0xE2(APP2) | Size: 600 | Content size: 598
-0xE1(APP1) | Size: 1064 | Content size: 1062
-0xE1(APP1) | Size: 54379 | Content size: 54377
-0xE2(APP2) | Size: 88 | Content size: 86
-0xDB(DQT) | Size: 67 | Content size: 65
-0xDB(DQT) | Size: 67 | Content size: 65
-0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15
-0xC4(DHT) | Size: 31 | Content size: 29
-0xC4(DHT) | Size: 181 | Content size: 179
-0xC4(DHT) | Size: 31 | Content size: 29
-0xC4(DHT) | Size: 181 | Content size: 179
-0xDA(SOS) | Size: 196470 | Content size: 196468
-0xD9(EOI) | Size: 0
-0xD8(SOI) | Size: 0
-0xE0(APP0) | Size: 16 | Content size: 14
-0xE1(APP1) | Size: 571 | Content size: 569
-0xDB(DQT) | Size: 67 | Content size: 65
-0xC0(SOF0 (Baseline)) | Size: 11 | Content size: 9
-0xC4(DHT) | Size: 31 | Content size: 29
-0xC4(DHT) | Size: 181 | Content size: 179
-0xDA(SOS) | Size: 8659 | Content size: 8657
-0xD9(EOI) | Size: 0
+[0]: 0xD8(SOI) | Size: 0
+[2]: 0xE1(APP1) | Size: 4685 | Content size: 4683
+[4689]: 0xE0(APP0) | Size: 16 | Content size: 14
+[4707]: 0xE2(APP2) | Size: 600 | Content size: 598
+[5309]: 0xE1(APP1) | Size: 1064 | Content size: 1062
+[6375]: 0xE1(APP1) | Size: 54379 | Content size: 54377
+[60756]: 0xE2(APP2) | Size: 88 | Content size: 86
+[60846]: 0xDB(DQT) | Size: 67 | Content size: 65
+[60915]: 0xDB(DQT) | Size: 67 | Content size: 65
+[60984]: 0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15
+[61003]: 0xC4(DHT) | Size: 31 | Content size: 29
+[61036]: 0xC4(DHT) | Size: 181 | Content size: 179
+[61219]: 0xC4(DHT) | Size: 31 | Content size: 29
+[61252]: 0xC4(DHT) | Size: 181 | Content size: 179
+[61435]: 0xDA(SOS) | Size: 196470 | Content size: 196468
+[257907]: 0xD9(EOI) | Size: 0
+[257909]: 0xD8(SOI) | Size: 0
+[257911]: 0xE0(APP0) | Size: 16 | Content size: 14
+[257929]: 0xE1(APP1) | Size: 571 | Content size: 569
+[258502]: 0xDB(DQT) | Size: 67 | Content size: 65
+[258571]: 0xC0(SOF0 (Baseline)) | Size: 11 | Content size: 9
+[258584]: 0xC4(DHT) | Size: 31 | Content size: 29
+[258617]: 0xC4(DHT) | Size: 181 | Content size: 179
+[258800]: 0xDA(SOS) | Size: 8659 | Content size: 8657
+[267461]: 0xD9(EOI) | Size: 0
