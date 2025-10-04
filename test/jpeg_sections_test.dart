@@ -41,4 +41,7 @@ void main() {
   test('markers_img_gap_random_soi', () async {
     await _t('markers_img_gap_random_soi');
   });
+  test('markers_multiple_gaps', () async {
+    await _t('markers_multiple_gaps');
+  });
 }

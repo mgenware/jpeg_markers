@@ -52,20 +52,23 @@ abstract class JpegSection {
 }
 
 class JpegDataSection extends JpegSection {
-  JpegDataSection(super.offset, super.length);
+  final int dataIndex;
+
+  JpegDataSection(super.offset, super.length, this.dataIndex);
 
   @override
-  String toString() => 'JpegDataSection[$offset]\n$length';
+  String toString() => 'JpegDataSection($dataIndex)[$offset]\n$length';
 }
 
 class JpegImgSection extends JpegSection {
   final List<JpegMarker> markers;
+  final int imgIndex;
 
-  JpegImgSection(super.offset, super.length, this.markers);
+  JpegImgSection(super.offset, super.length, this.markers, this.imgIndex);
 
   @override
   String toString() =>
-      'JpegImgSection[$offset]\n$length\nMarkers: \n${markers.join('\n')}';
+      'JpegImgSection($imgIndex)[$offset]\n$length\nMarkers: \n${markers.join('\n')}';
 }
 
 /// Scans the JPEG markers in the given data.
@@ -115,6 +118,9 @@ List<JpegSection> scanJpegSections(
   final List<JpegSection> res = [];
   var gOffset = 0;
 
+  var imgIndex = -1;
+  var dataIndex = -1;
+
   void addAndMergeDataSection(int offset, int length) {
     if (length <= 0) {
       return;
@@ -126,11 +132,12 @@ List<JpegSection> scanJpegSections(
         res[res.length - 1] = JpegDataSection(
           last.offset,
           last.length + length,
+          last.dataIndex,
         );
         return;
       }
     }
-    res.add(JpegDataSection(offset, length));
+    res.add(JpegDataSection(offset, length, ++dataIndex));
   }
 
   void flushMarkers(List<JpegMarkerWithOffset> markers) {
@@ -142,6 +149,7 @@ List<JpegSection> scanJpegSections(
         startOffset,
         totalLength,
         markers.map((e) => e.marker).toList(),
+        ++imgIndex,
       ),
     );
   }

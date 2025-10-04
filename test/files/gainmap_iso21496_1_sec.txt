@@ -1,4 +1,4 @@
-JpegImgSection[0]
+JpegImgSection(0)[0]
 1996
 Markers: 
 0xD8(SOI) | Size: 0
