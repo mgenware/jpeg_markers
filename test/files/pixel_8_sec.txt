@@ -1,5 +1,5 @@
 JpegImgSection(0)[0]
-267463
+257909
 Markers: 
 [0]: 0xD8(SOI) | Size: 0
 [2]: 0xE1(APP1) | Size: 4685 | Content size: 4683
@@ -17,6 +17,9 @@ Markers:
 [61252]: 0xC4(DHT) | Size: 181 | Content size: 179
 [61435]: 0xDA(SOS) | Size: 196470 | Content size: 196468
 [257907]: 0xD9(EOI) | Size: 0
+JpegImgSection(1)[257909]
+9554
+Markers: 
 [257909]: 0xD8(SOI) | Size: 0
 [257911]: 0xE0(APP0) | Size: 16 | Content size: 14
 [257929]: 0xE1(APP1) | Size: 571 | Content size: 569

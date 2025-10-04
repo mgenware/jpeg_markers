@@ -74,8 +74,9 @@ class JpegImgSection extends JpegSection {
 /// Scans the JPEG markers in the given data.
 int scanJpegMarkers(
   Uint8List data,
-  void Function(JpegMarker marker, int offset) callback,
-) {
+  void Function(JpegMarker marker, int offset) callback, {
+  bool? stopOnEoi,
+}) {
   int offset = 0;
   while (offset < data.length) {
     final markerData = Uint8List.sublistView(data, offset);
@@ -91,6 +92,10 @@ int scanJpegMarkers(
     } else {
       // 2 is marker type size.
       offset += 2 + _segmentLength(markerData);
+    }
+
+    if (stopOnEoi == true && marker.type == 0xd9) {
+      break;
     }
   }
   return min(offset, data.length);
@@ -177,6 +182,7 @@ List<JpegSection> scanJpegSections(
             JpegMarkerWithOffset(gOffset + localOffset, marker),
           );
         },
+        stopOnEoi: true,
       );
       final lastMarker = possibleMarkers.isNotEmpty
           ? possibleMarkers.last

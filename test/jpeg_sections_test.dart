@@ -44,4 +44,7 @@ void main() {
   test('markers_multiple_gaps', () async {
     await _t('markers_multiple_gaps');
   });
+  test('consecutive_sub_imgs_with_trailer', () async {
+    await _t('consecutive_sub_imgs_with_trailer');
+  });
 }

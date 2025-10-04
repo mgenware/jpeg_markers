@@ -1,5 +1,5 @@
 JpegImgSection(0)[0]
-1113857
+827303
 Markers: 
 [0]: 0xD8(SOI) | Size: 0
 [2]: 0xE1(APP1) | Size: 8805 | Content size: 8803
@@ -14,6 +14,9 @@ Markers:
 [19589]: 0xC4(DHT) | Size: 418 | Content size: 416
 [20009]: 0xDA(SOS) | Size: 807290 | Content size: 807288
 [827301]: 0xD9(EOI) | Size: 0
+JpegImgSection(1)[827303]
+286554
+Markers: 
 [827303]: 0xD8(SOI) | Size: 0
 [827305]: 0xE1(APP1) | Size: 1097 | Content size: 1095
 [828404]: 0xDB(DQT) | Size: 132 | Content size: 130

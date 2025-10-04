@@ -1,0 +1,44 @@
+JpegImgSection(0)[0]
+634
+Markers: 
+[0]: 0xD8(SOI) | Size: 0
+[2]: 0xE0(APP0) | Size: 16 | Content size: 14
+[20]: 0xDB(DQT) | Size: 67 | Content size: 65
+[89]: 0xDB(DQT) | Size: 67 | Content size: 65
+[158]: 0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15
+[177]: 0xC4(DHT) | Size: 31 | Content size: 29
+[210]: 0xC4(DHT) | Size: 181 | Content size: 179
+[393]: 0xC4(DHT) | Size: 31 | Content size: 29
+[426]: 0xC4(DHT) | Size: 181 | Content size: 179
+[609]: 0xDA(SOS) | Size: 21 | Content size: 19
+[632]: 0xD9(EOI) | Size: 0
+JpegImgSection(1)[634]
+634
+Markers: 
+[634]: 0xD8(SOI) | Size: 0
+[636]: 0xE0(APP0) | Size: 16 | Content size: 14
+[654]: 0xDB(DQT) | Size: 67 | Content size: 65
+[723]: 0xDB(DQT) | Size: 67 | Content size: 65
+[792]: 0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15
+[811]: 0xC4(DHT) | Size: 31 | Content size: 29
+[844]: 0xC4(DHT) | Size: 181 | Content size: 179
+[1027]: 0xC4(DHT) | Size: 31 | Content size: 29
+[1060]: 0xC4(DHT) | Size: 181 | Content size: 179
+[1243]: 0xDA(SOS) | Size: 21 | Content size: 19
+[1266]: 0xD9(EOI) | Size: 0
+JpegImgSection(2)[1268]
+634
+Markers: 
+[1268]: 0xD8(SOI) | Size: 0
+[1270]: 0xE0(APP0) | Size: 16 | Content size: 14
+[1288]: 0xDB(DQT) | Size: 67 | Content size: 65
+[1357]: 0xDB(DQT) | Size: 67 | Content size: 65
+[1426]: 0xC0(SOF0 (Baseline)) | Size: 17 | Content size: 15
+[1445]: 0xC4(DHT) | Size: 31 | Content size: 29
+[1478]: 0xC4(DHT) | Size: 181 | Content size: 179
+[1661]: 0xC4(DHT) | Size: 31 | Content size: 29
+[1694]: 0xC4(DHT) | Size: 181 | Content size: 179
+[1877]: 0xDA(SOS) | Size: 21 | Content size: 19
+[1900]: 0xD9(EOI) | Size: 0
+JpegDataSection(0)[1902]
+40
